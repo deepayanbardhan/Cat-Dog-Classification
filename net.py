@@ -61,6 +61,7 @@ def CNN():
     
     z=model.fit(xtrain,ytrain,validation_split=0.1,batch_size=32,epochs=10,shuffle=True)
     
+    
     """
     outcomes=model.predict(xtest)
     ytest = [np.argmax(i) for i in outcomes]"""
