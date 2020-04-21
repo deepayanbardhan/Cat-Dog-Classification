@@ -56,10 +56,11 @@ def CNN():
     model=Sequential()
     model.add(Dense(64, activation="sigmoid",input_shape=(30000,)))
     model.add(Dense(16, activation="sigmoid"))
-    model.add(Dense(2, activation="sigmoid"))
+    model.add(Dense(2, activation="softmax"))
     model.compile(loss="sparse_categorical_crossentropy",optimizer="Adam",metrics=['accuracy'])
     
     z=model.fit(xtrain,ytrain,validation_split=0.1,batch_size=32,epochs=10,shuffle=True)
+    
     """
     outcomes=model.predict(xtest)
     ytest = [np.argmax(i) for i in outcomes]"""
