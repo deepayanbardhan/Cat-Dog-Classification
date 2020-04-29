@@ -47,6 +47,9 @@ def load_test(filepath):
 def NN(cat,dog,test):
     
     #print (cat.shape) 8,30000
+    cat=cat.flatten()
+    dog=dog.flatten()
+    test=test.flatten()
     xtrain=np.concatenate((cat,dog),0)
     ytrain=np.asarray([1 if i<len(cat) else 0 for i in range(len(cat) +len(dog))])
     xtest=test
@@ -54,7 +57,6 @@ def NN(cat,dog,test):
     model=Sequential()
     model.add(Dense(64, activation="sigmoid",input_shape=xtrain.shape[1:]))
     model.add(Dense(16, activation="relu"))
-    #model.add(Dense(8, activation="sigmoid"))
     model.add(Dense(2, activation="softmax"))
     model.compile(loss="sparse_categorical_crossentropy",optimizer="Adam",metrics=['accuracy'])
     
