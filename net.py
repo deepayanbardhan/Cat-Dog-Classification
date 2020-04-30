@@ -47,13 +47,15 @@ def load_test(filepath):
 def NN(cat,dog,test):
     
     #print (cat.shape) 8,30000
-    cat=cat.flatten()
-    dog=dog.flatten()
-    test=test.flatten()
+    print(len(cat))
+    cat=cat.reshape(len(cat),64*64*3)
+    dog=dog.reshape(len(dog),64*64*3)
+    test=test.reshape(len(test),64*64*3)
+    
     xtrain=np.concatenate((cat,dog),0)
     ytrain=np.asarray([1 if i<len(cat) else 0 for i in range(len(cat) +len(dog))])
     xtest=test
-
+    print(cat.shape)
     model=Sequential()
     model.add(Dense(64, activation="sigmoid",input_shape=xtrain.shape[1:]))
     model.add(Dense(16, activation="relu"))
@@ -100,7 +102,7 @@ def CNN(cat,dog,test):
     
 
     outcomes=model.predict(xtest)
-    ytest=[np.argmax(i) for i in outcomes] #change to round-off
+    ytest=[1 if i>0.5 else 0 for i in outcomes]
     
     return (outcomes,ytest)
     
@@ -113,6 +115,6 @@ cat,dog=load_train(train_path)
 #    pickle.dump(dog,f)
 #with open('var.pickle','rb') as f:
 #    dog=pickle.load(f)
-test=load_test(test_path)
-outcomes,ytest=CNN(cat,dog,test)
+#test=load_test(test_path)
+outcomes,ytest=NN(cat,dog,test)
 
