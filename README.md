@@ -7,7 +7,7 @@ https://www.kaggle.com/c/dogs-vs-cats
 
 The basic task is to categorize cats and dogs into 2 different classes. I have used CNN (Convolutional Neural Network) to perform the task and also compared the results with a feed forward ANN (Artificial Neural Network). Although the test is performed on a very small data-set because of inconvenience the results are however comparable and gives us a fair idea of how the models are supposed to work.
 
-For details of the code check the ![my notebook file](https://github.com/deepayanbardhan/Cat-Dog-Classification/blob/master/CatDog_Classifier.ipynb)
+For details of the code check my Jupyter Notebook File here.![Link](https://github.com/deepayanbardhan/Cat-Dog-Classification/blob/master/CatDog_Classifier.ipynb)
 
 The model achitecture used is:
 
